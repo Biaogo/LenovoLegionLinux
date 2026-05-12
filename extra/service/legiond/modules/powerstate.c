@@ -42,7 +42,7 @@ POWER_STATE get_powerstate()
 	}
 	fclose(fp);
 	
-	if (MATCH(profile, "quiet")) {
+	if (MATCH(profile, "quiet") || MATCH(profile, "low-power")) {
 		power_state = P_AC_Q;
 	} else if (MATCH(profile, "balanced")) {
 		power_state = P_AC_B;
@@ -51,7 +51,11 @@ POWER_STATE get_powerstate()
 	} else if (MATCH(profile, "balanced-performance")) {
 		// Custom Mode
 		power_state = P_AC_BP;
+	} else if (MATCH(profile, "max-power")) {
+		// Extreme Mode
+		power_state = P_AC_E;
 	}
+
 
 	if (!ac_state && power_state != -1) {
 		power_state++;
