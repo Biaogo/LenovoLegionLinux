@@ -48,10 +48,10 @@ POWER_STATE get_powerstate()
 		power_state = P_AC_B;
 	} else if (MATCH(profile, "performance")) {
 		power_state = P_AC_P;
-	} else if (MATCH(profile, "balanced-performance")) {
+	} else if (MATCH(profile, "balanced-performance") || MATCH(profile, "custom")) {
 		// Custom Mode
 		power_state = P_AC_BP;
-	} else if (MATCH(profile, "max-power")) {
+	} else if (MATCH(profile, "extreme") || MATCH(profile, "max-power")) {
 		// Extreme Mode
 		power_state = P_AC_E;
 	}
